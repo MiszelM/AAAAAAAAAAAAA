@@ -5,7 +5,9 @@ use App\Http\Controllers\CreditOfferController;
 use App\Http\Controllers\UserController;
 use App\Livewire\CreditOfferTable;
 
-
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
 
 Route::get('/credit-offers', function () {
     return view('credit_offers.index');
@@ -26,8 +28,5 @@ Route::middleware(['permission:users.view'])->group(function () {
         ->middleware('permission:users.assign_role')
         ->name('users.role');
 });
-Route::get('/profile', function () {
-    return 'Profil – do zrobienia';
-})->name('profile.edit');
 
 require __DIR__.'/auth.php';
