@@ -8,23 +8,59 @@ use Illuminate\Auth\Access\Response;
 
 class CreditOfferPolicy
 {
-public function viewAny(User $user)
-{
-    return $user->can('credit_offers.view');
-}
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        return $user->can('credit_offers.viewAny');
+    }
 
-public function create(User $user)
-{
-    return $user->can('credit_offers.manage');
-}
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, CreditOffer $creditOffer): bool
+    {
+        return $user->can('credit_offers.view');
+    }
 
-public function update(User $user)
-{
-    return $user->can('credit_offers.manage');
-}
+    /**
+     * Determine whether the user can create models.
+     */
+    public function create(User $user): bool
+    {
+        return $user->can('credit_offers.create');
+    }
 
-public function delete(User $user)
-{
-    return $user->can('credit_offers.manage');
-}
+    /**
+     * Determine whether the user can update the model.
+     */
+    public function update(User $user, CreditOffer $creditOffer): bool
+    {
+        return $user->can('credit_offers.update');
+    }
+
+    /**
+     * Determine whether the user can delete the model.
+     */
+    public function delete(User $user, CreditOffer $creditOffer): bool
+    {
+        return $user->can('credit_offers.delete');
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, CreditOffer $creditOffer): bool
+    {
+        return $user->can('credit_offers.update');
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, CreditOffer $creditOffer): bool
+    {
+        return $user->can('credit_offers.forceDpdate');
+    }
 }

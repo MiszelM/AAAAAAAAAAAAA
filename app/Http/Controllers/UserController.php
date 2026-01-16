@@ -12,7 +12,6 @@ class UserController extends Controller
     {
         $query = User::query()->with('roles');
 
-        // wyszukiwanie
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
@@ -20,9 +19,13 @@ class UserController extends Controller
             });
         }
 
-        // sortowanie
-        if (in_array($request->sort, ['name', 'email'])) {
-            $query->orderBy($request->sort);
+        
+        if (in_array($request->sort, ['id ASC','name ASC', 'email ASC'])) {
+            $query->orderBy($request->sort_ascending);
+        }
+
+        if (in_array($request->sort, ['id DESC','name DESC', 'email DESC'])) {
+            $query->orderBy($request->sort_descending);
         }
 
         return view('users.index', [

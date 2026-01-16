@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\CreditOfferSeeder;
+use Database\Seeders\KlientSeeder;
+use Database\Seeders\PracownikSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,10 +20,14 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $this->call([
+            RolePermissionSeeder::class,
             CreditOfferSeeder::class,
-        ]);
-        $this->call([
-        RolePermissionSeeder::class,
+            KlientSeeder::class,
+            PracownikSeeder::class,
+            WniosekKredytowySeeder::class,
+            OcenaSeeder::class,
+            KredytSeeder::class,
+            
         ]);
     }
 }

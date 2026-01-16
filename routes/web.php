@@ -2,17 +2,34 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreditOfferController;
+use App\Http\Controllers\PracownikController;
+use App\Http\Controllers\KlientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WniosekKredytowyController;
+use App\Http\Controllers\KredytController;
+use App\Http\Controllers\OcenaController;
 use App\Livewire\CreditOfferTable;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-Route::get('/credit-offers', function () {
-    return view('credit_offers.index');
-})->middleware('auth')->name('credit-offers.index');
+Route::get('/klienci', [KlientController::class, 'index'])->name('klienci.index');
 
+Route::get('/pracownicy', [PracownikController::class, 'index'])->name('pracownicy.index');
+
+Route::get('/wnioski', [WniosekKredytowyController::class, 'index'])->name('wniosek_kredytowies.index');
+
+Route::get('/oferty', [CreditOfferController::class, 'index'])->name('oferty.index');
+
+Route::get('/oceny', [OcenaController::class, 'index'])->name('ocenas.index');
+
+Route::get('/kredyty', [KredytController::class, 'index'])->name('kredyts.index');
+
+
+Route::get('/profile/edit', function () {
+    return redirect()->route('dashboard');
+})->middleware('auth')->name('profile.edit');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

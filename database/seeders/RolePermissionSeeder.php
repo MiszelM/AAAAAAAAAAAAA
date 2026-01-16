@@ -10,7 +10,7 @@ class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Czyścimy cache uprawnień (WAŻNE)
+    
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Lista uprawnień
@@ -56,6 +56,7 @@ class RolePermissionSeeder extends Seeder
             'clients.manage',
             'credit_offers.view',
             'credit_offers.manage',
+            
         ]);
 
         $client->givePermissionTo([

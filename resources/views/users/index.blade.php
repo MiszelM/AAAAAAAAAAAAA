@@ -12,8 +12,12 @@
     >
     <select name="sort" class="border px-2 py-1">
         <option value="">Sortuj</option>
-        <option value="name">Nazwa</option>
-        <option value="email">Email</option>
+        <option value="id ASC">ID Rosnąco</option>
+        <option value="id DESC">ID Malejąco</option>
+        <option value="name ASC">Nazwa rosnąco</option>
+        <option value="name DESC">Nazwa malejąco</option>
+        <option value="email ASC">Email rosnąco</option>
+        <option value="email DESC">Email malejąco</option>
     </select>
     <button class="border px-3 py-1">Filtruj</button>
 </form>
